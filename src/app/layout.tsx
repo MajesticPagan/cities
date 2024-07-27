@@ -5,6 +5,8 @@ import { LayoutProps } from "@/types/globals";
 
 import { cn } from "@/lib/utils";
 
+import { ThemeProvider } from "@/components/providers";
+
 import "./globals.css";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
@@ -22,7 +24,14 @@ export default function RootLayout({ children }: LayoutProps) {
 					fontSans.variable
 				)}
 			>
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
