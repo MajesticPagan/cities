@@ -5,6 +5,7 @@ import { LayoutProps } from "@/types/globals";
 
 import { cn } from "@/lib/utils";
 
+import { Header } from "@/components/elements";
 import { ThemeProvider } from "@/components/providers";
 
 import "@/styles/globals.css";
@@ -33,6 +34,8 @@ export default function RootLayout({ children }: LayoutProps) {
 					enableSystem
 					disableTransitionOnChange
 				>
+					<Header />
+
 					{children}
 				</ThemeProvider>
 			</body>

@@ -5,14 +5,7 @@ import { CountryPageParams, PageParams } from "@/types/globals";
 
 import { slugify } from "@/lib/utils";
 
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui";
 
 function fetchCountryData(slug: string) {
 	const countries = Country.getAllCountries();
