@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Country } from "country-state-city";
 
-import { CountryRouteParams, RouteParams } from "@/types/globals";
+import { CountryPageParams, PageParams } from "@/types/globals";
 
 import { slugify } from "@/lib/utils";
 
@@ -24,7 +24,7 @@ export function generateStaticParams() {
 	return countries.map((country) => ({ country: slugify(country.name) }));
 }
 
-export default function CountryPage({ params }: RouteParams<CountryRouteParams>) {
+export default function CountryPage({ params }: PageParams<CountryPageParams>) {
 	const country = fetchCountryData(params.country);
 
 	if (!country) notFound();

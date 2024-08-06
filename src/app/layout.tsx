@@ -9,7 +9,10 @@ import { ThemeProvider } from "@/components/providers";
 
 import "@/styles/globals.css";
 
-const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
+const fontSans = FontSans({
+	subsets: ["latin"],
+	variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
 	title: "Cities",

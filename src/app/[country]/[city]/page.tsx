@@ -1,6 +1,6 @@
-import { CityRouteParams, CountryRouteParams, RouteParams } from "@/types/globals";
+import { CityPageParams, CountryPageParams, PageParams } from "@/types/globals";
 
-export default function CityPage({ params }: RouteParams<CountryRouteParams & CityRouteParams>) {
+export default function CityPage({ params }: PageParams<CountryPageParams & CityPageParams>) {
 	console.log(params);
 	return <div>{params.city}</div>;
 }
