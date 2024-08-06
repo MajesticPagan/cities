@@ -4,14 +4,19 @@ export type LayoutProps = {
 	children: ReactNode;
 };
 
-export type RouteParams<T> = {
+export type ErrorProps = {
+	error: Error & { digest?: string };
+	reset: () => void;
+};
+
+export type PageParams<T> = {
 	params: T;
 };
 
-export type CountryRouteParams = {
+export type CountryPageParams = {
 	country: string;
 };
 
-export type CityRouteParams = {
+export type CityPageParams = {
 	city: string;
 };
