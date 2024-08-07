@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import { Country } from "country-state-city";
+import { Clock, Coins, Earth, Phone } from "lucide-react";
 
 import { CountryPageParams, PageParams } from "@/types/globals";
 
 import { slugify } from "@/lib/utils";
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 function fetchCountryData(slug: string) {
 	const countries = Country.getAllCountries();
@@ -22,115 +23,53 @@ export default function CountryPage({ params }: PageParams<CountryPageParams>) {
 
 	if (!country) notFound();
 
+	console.log(country);
+
 	return (
-		<Table>
-			<TableHeader>
-				<TableRow>
-					<TableHead>Customer</TableHead>
-					<TableHead className="hidden sm:table-cell">Type</TableHead>
-					<TableHead className="hidden sm:table-cell">Status</TableHead>
-					<TableHead className="hidden md:table-cell">Date</TableHead>
-					<TableHead className="text-right">Amount</TableHead>
-				</TableRow>
-			</TableHeader>
-			<TableBody>
-				<TableRow className="bg-accent">
-					<TableCell>
-						<div className="font-medium">Liam Johnson</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							liam@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Sale</TableCell>
-					<TableCell className="hidden sm:table-cell">Fulfilled</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-23</TableCell>
-					<TableCell className="text-right">$250.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Olivia Smith</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							olivia@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Refund</TableCell>
-					<TableCell className="hidden sm:table-cell">Declined</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-24</TableCell>
-					<TableCell className="text-right">$150.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Noah Williams</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							noah@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Subscription</TableCell>
-					<TableCell className="hidden sm:table-cell">Fulfilled</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-25</TableCell>
-					<TableCell className="text-right">$350.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Emma Brown</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							emma@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Sale</TableCell>
-					<TableCell className="hidden sm:table-cell">Fulfilled</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-26</TableCell>
-					<TableCell className="text-right">$450.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Liam Johnson</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							liam@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Sale</TableCell>
-					<TableCell className="hidden sm:table-cell">Fulfilled</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-23</TableCell>
-					<TableCell className="text-right">$250.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Liam Johnson</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							liam@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Sale</TableCell>
-					<TableCell className="hidden sm:table-cell">Fulfilled</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-23</TableCell>
-					<TableCell className="text-right">$250.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Olivia Smith</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							olivia@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Refund</TableCell>
-					<TableCell className="hidden sm:table-cell">Declined</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-24</TableCell>
-					<TableCell className="text-right">$150.00</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>
-						<div className="font-medium">Emma Brown</div>
-						<div className="hidden text-sm text-muted-foreground md:inline">
-							emma@example.com
-						</div>
-					</TableCell>
-					<TableCell className="hidden sm:table-cell">Sale</TableCell>
-					<TableCell className="hidden sm:table-cell">Fulfilled</TableCell>
-					<TableCell className="hidden md:table-cell">2023-06-26</TableCell>
-					<TableCell className="text-right">$450.00</TableCell>
-				</TableRow>
-			</TableBody>
-		</Table>
+		<>
+			<h1 className="mb-8">{country.name}</h1>
+
+			<div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
+						<CardTitle className="text-sm font-medium">Currency</CardTitle>
+						<Coins className="h-4 w-4" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">{country.currency}</div>
+					</CardContent>
+				</Card>
+
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
+						<CardTitle className="text-sm font-medium">Phone Code</CardTitle>
+						<Phone className="h-4 w-4" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">{`+${country.phonecode}`}</div>
+					</CardContent>
+				</Card>
+
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
+						<CardTitle className="text-sm font-medium">LAT/LNG</CardTitle>
+						<Earth className="h-4 w-4" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">{country.latitude}</div>
+					</CardContent>
+				</Card>
+
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
+						<CardTitle className="text-sm font-medium">Active Now</CardTitle>
+						<Clock className="h-4 w-4" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">+573</div>
+					</CardContent>
+				</Card>
+			</div>
+		</>
 	);
 }

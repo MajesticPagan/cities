@@ -16,7 +16,7 @@ const Splash = ({
 	link = { href: "/" },
 	linkText = "Go to home",
 }: SplashProps) => (
-	<div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+	<div className="flex min-h-full flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
 		<div className="mx-auto max-w-md text-center">
 			{status && <div className="text-9xl font-bold text-primary">{status}</div>}
 

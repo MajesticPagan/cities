@@ -22,21 +22,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
 	return (
 		<html lang="en">
-			<body
-				className={cn(
-					"min-h-screen bg-background font-sans antialiased",
-					fontSans.variable
-				)}
-			>
+			<body className={cn("h-screen bg-background font-sans antialiased", fontSans.variable)}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<Header />
+					<div className="flex flex-col h-full">
+						<Header />
 
-					{children}
+						<main className="container flex-1 overflow-y-auto pt-6 md:pt-12">{children}</main>
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>
