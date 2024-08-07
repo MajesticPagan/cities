@@ -63,7 +63,36 @@
 	* {
 		@apply border-border;
 	}
+
 	body {
 		@apply bg-background text-foreground;
+	}
+
+	h1, h4, h4, h4, h5, h6 {
+		@apply scroll-m-20 tracking-tight font-semibold;
+	}
+
+	h1 {
+		@apply text-4xl lg:text-5xl font-extrabold;
+	}
+
+	h2 {
+		@apply text-3xl first:mt-0;
+	}
+
+	h3 {
+		@apply text-2xl;
+	}
+
+	h4 {
+		@apply text-xl;
+	}
+
+	h5 {
+		@apply text-lg;
+	}
+	
+	h6 {
+		@apply text-base;
 	}
 }
