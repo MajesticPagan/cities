@@ -32,7 +32,9 @@ export default function RootLayout({ children }: LayoutProps) {
 					<div className="flex flex-col h-full">
 						<Header />
 
-						<main className="container flex-1 overflow-y-auto pt-6 md:pt-12">{children}</main>
+						<main className="flex-1 overflow-y-auto pt-6 md:pt-12">
+							<div className="container">{children}</div>
+						</main>
 					</div>
 				</ThemeProvider>
 			</body>
