@@ -1,9 +1,12 @@
-import Image from "next/image";
-
-import { Country, State, City } from "country-state-city";
-
-import { ColorSchemeToggle } from "@/components/elements";
+import { Splash } from "@/components/sections";
 
 export default function Home() {
-	return <div></div>;
+	return (
+		<Splash
+			status="Cities"
+			title="Find any city at your fingertips"
+			text="Search, discover, and explore cities across the globe with ease. Start your journey now!"
+		>
+		</Splash>
+	);
 }

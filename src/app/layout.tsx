@@ -29,13 +29,7 @@ export default function RootLayout({ children }: LayoutProps) {
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="flex flex-col h-full">
-						<Header />
-
-						<main className="flex-1 overflow-y-auto pt-6 md:pt-12">
-							<div className="container">{children}</div>
-						</main>
-					</div>
+					<div className="flex flex-col h-full">{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>
