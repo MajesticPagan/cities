@@ -10,7 +10,7 @@ const Header = () => {
 			<div className="bg-background border-b">
 				<div className="container flex items-center justify-between h-14">
 					<nav className="flex items-center gap-2">
-						<Link href="#">
+						<Link href="/">
 							<Building className="h-6 w-6" />
 							<span className="sr-only">Cities</span>
 						</Link>
@@ -36,26 +36,6 @@ const Header = () => {
 					</div>
 				</div>
 			</div>
-
-			<nav className="text-sm bg-muted/40 border-b border-muted">
-				<ul className="container flex items-center justify-start gap-4 h-10">
-					<li>
-						<Link href="#" className="text-secondary-foreground">
-							Overview
-						</Link>
-					</li>
-					<li>
-						<Link href="#" className="text-secondary-foreground">
-							Statistics
-						</Link>
-					</li>
-					<li>
-						<Link href="#" className="text-secondary-foreground">
-							Weather
-						</Link>
-					</li>
-				</ul>
-			</nav>
 		</header>
 	);
 };
