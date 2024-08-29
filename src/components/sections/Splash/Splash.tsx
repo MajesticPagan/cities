@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
-import Link, { LinkProps } from "next/link";
 import { FC, HTMLAttributes } from "react";
+import Link, { LinkProps } from "next/link";
+
+import { cn } from "@/lib/utils";
 
 type SplashProps = {
 	status?: string | number;
