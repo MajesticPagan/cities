@@ -9,11 +9,8 @@ export default function ErrorPage({ error, reset }: ErrorProps) {
 		error?.message || "Please contact the admin for further details or try again later.";
 
 	return (
-		<Splash
-			title="Something went wrong"
-			text={text}
-			link={{ href: "#", onClick: () => reset() }}
-			linkText="Try again"
-		/>
+		<Splash title="Something went wrong" text={text}>
+			<Splash.Link href="#" onClick={() => reset()} />
+		</Splash>
 	);
 }
