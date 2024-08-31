@@ -1,10 +1,11 @@
 "use client";
 
-import { ButtonHTMLAttributes, useCallback, useState } from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { ButtonHTMLAttributes, useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Check, Search as SearchIcon } from "lucide-react";
 import { Country, ICountry } from "country-state-city";
 
-import { cn } from "@/lib/utils";
+import { cn, slugify } from "@/lib/utils";
 
 import {
 	Button,
@@ -22,21 +23,30 @@ import {
 type SearchProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Search = ({ className, ...props }: SearchProps) => {
+	const router = useRouter();
 	const countries = Country.getAllCountries();
 	const [open, setOpen] = useState<boolean>(false);
 	const [value, setValue] = useState<ICountry>();
 
 	const onSelect = useCallback(
 		(selectedValue: string) => {
-			setValue(
-				selectedValue !== value?.isoCode
-					? countries.find((country) => country.isoCode === selectedValue)
-					: undefined
-			);
+			let returnValue;
+
+			if (selectedValue !== value?.name) {
+				returnValue = countries.find((country) => selectedValue === country.name);
+			}
+
+			setValue(returnValue);
 			setOpen(false);
 		},
 		[value]
 	);
+
+	useEffect(() => {
+		if (value?.name) {
+			router.push(slugify(value.name));
+		}
+	}, [value]);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -51,7 +61,7 @@ const Search = ({ className, ...props }: SearchProps) => {
 					{value
 						? countries.find((country) => country.isoCode === value.isoCode)?.name
 						: "Select country..."}
-					<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+					<SearchIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w- max-w-md p-0">
@@ -63,7 +73,7 @@ const Search = ({ className, ...props }: SearchProps) => {
 							{countries.map((country) => (
 								<CommandItem
 									key={country.isoCode}
-									value={country.isoCode}
+									value={country.name}
 									onSelect={onSelect}
 								>
 									<Check
