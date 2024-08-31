@@ -3,5 +3,10 @@
 		"title": "Cities",
 		"subtitle": "Find any city at your fingertips",
 		"text": "Search, discover, and explore cities across the globe with ease. Start your journey now!"
+	},
+	"Search": {
+		"trigger": "Select country",
+		"search": "Search",
+		"noResults": "No country found" 
 	}
 }

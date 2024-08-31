@@ -3,5 +3,10 @@
 		"title": "Cidades",
 		"subtitle": "Encontre qualquer cidade ao seu alcance",
 		"text": "Pesquise, descubra e explore cidades de todo o mundo com facilidade. Comece já a sua jornada!"
+	},
+	"Search": {
+		"trigger": "Selecionar país",
+		"search": "Pesquisar",
+		"noResults": "Nenhum país encontrado"
 	}
 }
