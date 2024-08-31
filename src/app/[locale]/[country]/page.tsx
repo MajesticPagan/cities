@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { City, Country } from "country-state-city";
 import { Clock, Coins, Earth, Phone } from "lucide-react";
 
-import { CountryPageParams, PageParams } from "@/types/globals";
+import { CountryRouteParams, RouteParams } from "@/types/globals";
 
 import { slugify } from "@/lib/utils";
 import { fetchCountryBySlug } from "@/lib/fetch";
@@ -29,7 +29,7 @@ export function generateStaticParams() {
 	return countries.map((country) => ({ country: slugify(country.name) }));
 }
 
-export default function CountryPage({ params }: PageParams<CountryPageParams>) {
+export default function CountryPage({ params }: RouteParams<CountryRouteParams>) {
 	const country = fetchCountryBySlug(params.country);
 
 	if (!country) notFound();
@@ -101,7 +101,9 @@ export default function CountryPage({ params }: PageParams<CountryPageParams>) {
 							{cities.map((city, index) => (
 								<TableRow key={city.name + city.countryCode}>
 									<TableCell className="font-bold">
-										<Link href={`${params.country}/${slugify(city.name)}`}>{city.name}</Link>
+										<Link href={`${params.country}/${slugify(city.name)}`}>
+											{city.name}
+										</Link>
 									</TableCell>
 									<TableCell>{city.stateCode}</TableCell>
 									<TableCell>
