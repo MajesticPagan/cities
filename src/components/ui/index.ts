@@ -6,5 +6,6 @@ export * from "./Dialog";
 export * from "./DropdownMenu";
 export * from "./Input";
 export * from "./Popover";
+export * from "./Select";
 export * from "./Skeleton";
 export * from "./Table";
