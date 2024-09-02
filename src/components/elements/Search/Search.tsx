@@ -26,7 +26,7 @@ type SearchProps = ButtonHTMLAttributes<HTMLButtonElement>;
 const Search = ({ className, ...props }: SearchProps) => {
 	const router = useRouter();
 	const countries = Country.getAllCountries();
-	const t = useTranslations("Search");
+	const t = useTranslations("Components.Search");
 	const [open, setOpen] = useState<boolean>(false);
 	const [value, setValue] = useState<ICountry>();
 
@@ -66,7 +66,7 @@ const Search = ({ className, ...props }: SearchProps) => {
 					<SearchIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w- max-w-md p-0">
+			<PopoverContent className="w-md p-0">
 				<Command>
 					<CommandInput placeholder={t("search")} />
 					<CommandList>

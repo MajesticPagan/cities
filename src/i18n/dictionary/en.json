@@ -1,8 +1,10 @@
 {
+	"Global": {
+		"siteName": "Cities"
+	},
 	"Pages": {
 		"Home": {
-			"title": "Cities",
-			"subtitle": "Find any city at your fingertips",
+			"title": "Find any city at your fingertips",
 			"text": "Search, discover, and explore cities across the globe with ease. Start your journey now!"
 		},
 		"Error": {
@@ -14,14 +16,20 @@
 			"text": "The page you are looking for does not exist or has been moved."
 		}
 	},
-	"Search": {
-		"trigger": "Select country",
-		"search": "Search",
-		"noResults": "No country found"
-	},
 	"Components": {
 		"Splash": {
 			"linkText": "Go to home"
+		},
+		"ColorSchemeToggle": {
+			"label": "Toggle theme",
+			"light": "Light",
+			"dark": "Dark",
+			"system": "System"
+		},
+		"Search": {
+			"trigger": "Select country",
+			"search": "Search",
+			"noResults": "No country found"
 		}
 	}
 }

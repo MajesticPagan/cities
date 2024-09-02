@@ -8,10 +8,11 @@ import { Splash } from "@/components/sections";
 
 export default function Home({ params }: RouteParams<LocaleParams>) {
 	unstable_setRequestLocale(params.locale);
-	const t = useTranslations("Pages.Home");
+	const tGlobal = useTranslations("Global");
+	const tHome = useTranslations("Pages.Home");
 
 	return (
-		<Splash status={t("title")} title={t("subtitle")} text={t("text")}>
+		<Splash status={tGlobal("siteName")} title={tHome("title")} text={tHome("text")}>
 			<Search className="mt-6" />
 		</Splash>
 	);
