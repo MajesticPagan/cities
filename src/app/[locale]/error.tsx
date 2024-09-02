@@ -1,15 +1,18 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { ErrorProps } from "@/types/globals";
 
 import { Splash } from "@/components/sections";
 
 export default function ErrorPage({ error, reset }: ErrorProps) {
+	const t = useTranslations("Pages.Error");
 	const text =
-		error?.message || "Please contact the admin for further details or try again later.";
+		error?.message || t("text");
 
 	return (
-		<Splash title="Something went wrong" text={text}>
+		<Splash title={t("title")} text={text}>
 			<Splash.Link href="#" onClick={() => reset()} />
 		</Splash>
 	);

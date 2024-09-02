@@ -1,11 +1,15 @@
+import { useTranslations } from "next-intl";
+
 import { Splash } from "@/components/sections";
 
 export default function NotFoundPage() {
+	const t = useTranslations("Pages.NotFound");
+
 	return (
 		<Splash
 			status={404}
-			title="Page not found"
-			text="The page you are looking for does not exist or has been moved."
+			title={t("title")}
+			text={t("text")}
 		>
 			<Splash.Link href="/" />
 		</Splash>

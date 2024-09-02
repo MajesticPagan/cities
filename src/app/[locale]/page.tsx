@@ -8,7 +8,7 @@ import { Splash } from "@/components/sections";
 
 export default function Home({ params }: RouteParams<LocaleParams>) {
 	unstable_setRequestLocale(params.locale);
-	const t = useTranslations("Home");
+	const t = useTranslations("Pages.Home");
 
 	return (
 		<Splash status={t("title")} title={t("subtitle")} text={t("text")}>

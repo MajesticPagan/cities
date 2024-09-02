@@ -1,12 +1,27 @@
 {
-	"Home": {
-		"title": "Cidades",
-		"subtitle": "Encontre qualquer cidade ao seu alcance",
-		"text": "Pesquise, descubra e explore cidades de todo o mundo com facilidade. Comece já a sua jornada!"
+	"Pages": {
+		"Home": {
+			"title": "Cidades",
+			"subtitle": "Encontre qualquer cidade ao seu alcance",
+			"text": "Pesquise, descubra e explore cidades de todo o mundo com facilidade. Comece já a sua jornada!"
+		},
+		"Error": {
+			"title": "Algo correu mal",
+			"text": "Contacte o administrador para obter mais detalhes ou tente novamente mais tarde."
+		},
+		"NotFound": {
+			"title": "Página não encontrada",
+			"text": "A página que procura não existe ou foi movida."
+		}
 	},
 	"Search": {
 		"trigger": "Selecionar país",
 		"search": "Pesquisar",
 		"noResults": "Nenhum país encontrado"
+	},
+	"Components": {
+		"Splash": {
+			"linkText": "Regressar à página inicial"
+		}
 	}
 }
