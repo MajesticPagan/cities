@@ -1,10 +1,9 @@
 import { useTranslations } from "next-intl";
-import { Building, Settings } from "lucide-react";
+import { Building } from "lucide-react";
 
 import { Link } from "@/i18n/routing";
 
-import { ColorSchemeToggle, Search } from "@/components/elements";
-import { Button } from "@/components/ui";
+import { ColorSchemeToggle, Search, LangSwitch } from "@/components/elements";
 
 const Header = () => {
 	const t = useTranslations("Global");
@@ -23,10 +22,7 @@ const Header = () => {
 					<Search className="flex-1" />
 
 					<div className="flex items-center gap-2">
-						<Button variant="outline" size="icon">
-							<Settings className="h-5 w-5" />
-							<span className="sr-only">Settings</span>
-						</Button>
+						<LangSwitch />
 
 						<ColorSchemeToggle />
 					</div>

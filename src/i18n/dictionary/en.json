@@ -17,19 +17,23 @@
 		}
 	},
 	"Components": {
-		"Splash": {
-			"linkText": "Go to home"
-		},
 		"ColorSchemeToggle": {
 			"label": "Toggle theme",
 			"light": "Light",
 			"dark": "Dark",
 			"system": "System"
 		},
+		"LangSwitch": {
+			"placeholder": "Language",
+			"label": "{locale, select, en {English} pt {Português} other {Unknown}}"
+		},
 		"Search": {
 			"trigger": "Select country",
 			"search": "Search",
 			"noResults": "No country found"
+		},
+		"Splash": {
+			"linkText": "Go to home"
 		}
 	}
 }

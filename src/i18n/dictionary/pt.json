@@ -17,19 +17,23 @@
 		}
 	},
 	"Components": {
-		"Splash": {
-			"linkText": "Regressar à página inicial"
-		},
 		"ColorSchemeToggle": {
 			"label": "Alternar tema",
 			"light": "Claro",
 			"dark": "Escuro",
 			"system": "Sistema"
 		},
+		"LangSwitch": {
+			"placeholder": "Idioma",
+			"label": "{locale, select, en {English} pt {Português} other {Desconhecido}}"
+		},
 		"Search": {
 			"trigger": "Selecionar país",
 			"search": "Pesquisar",
 			"noResults": "Nenhum país encontrado"
+		},
+		"Splash": {
+			"linkText": "Regressar à página inicial"
 		}
 	}
 }
