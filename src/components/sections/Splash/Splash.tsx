@@ -1,5 +1,6 @@
 import { FC, HTMLAttributes } from "react";
 import Link, { LinkProps } from "next/link";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 
@@ -39,17 +40,25 @@ const Splash: SplashComponent = ({ status, title, text, className, children, ...
 	</section>
 );
 
-const SplashLink: SplashLinkComponent = ({ children = "Go to home", className, ...props }) => (
-	<Link
-		className={cn(
-			"inline-flex items-center rounded-md bg-primary px-4 py-2 mt-6 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
-			className
-		)}
-		{...props}
-	>
-		{children}
-	</Link>
-);
+const SplashLink: SplashLinkComponent = ({ children, className, ...props }) => {
+	const t = useTranslations("Components.Splash");
+
+	if (!children) {
+		children = t("linkText");
+	}
+
+	return (
+		<Link
+			className={cn(
+				"inline-flex items-center rounded-md bg-primary px-4 py-2 mt-6 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+				className
+			)}
+			{...props}
+		>
+			{children}
+		</Link>
+	);
+};
 Splash.Link = SplashLink;
 
 export default Splash;

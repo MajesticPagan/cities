@@ -1,7 +1,8 @@
 "use client";
 
 import { ButtonHTMLAttributes, useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { Check, Search as SearchIcon } from "lucide-react";
 import { Country, ICountry } from "country-state-city";
 
@@ -25,6 +26,7 @@ type SearchProps = ButtonHTMLAttributes<HTMLButtonElement>;
 const Search = ({ className, ...props }: SearchProps) => {
 	const router = useRouter();
 	const countries = Country.getAllCountries();
+	const t = useTranslations("Components.Search");
 	const [open, setOpen] = useState<boolean>(false);
 	const [value, setValue] = useState<ICountry>();
 
@@ -44,7 +46,7 @@ const Search = ({ className, ...props }: SearchProps) => {
 
 	useEffect(() => {
 		if (value?.name) {
-			router.push(slugify(value.name));
+			router.push("/" + slugify(value.name));
 		}
 	}, [value]);
 
@@ -60,15 +62,15 @@ const Search = ({ className, ...props }: SearchProps) => {
 				>
 					{value
 						? countries.find((country) => country.isoCode === value.isoCode)?.name
-						: "Select country..."}
+						: t("trigger")}
 					<SearchIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w- max-w-md p-0">
+			<PopoverContent className="w-md p-0">
 				<Command>
-					<CommandInput placeholder="Search..." />
+					<CommandInput placeholder={t("search")} />
 					<CommandList>
-						<CommandEmpty>No country found.</CommandEmpty>
+						<CommandEmpty>{t("noResults")}</CommandEmpty>
 						<CommandGroup>
 							{countries.map((country) => (
 								<CommandItem

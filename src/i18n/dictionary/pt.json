@@ -1,0 +1,55 @@
+{
+	"Global": {
+		"siteName": "Cidades"
+	},
+	"Pages": {
+		"Home": {
+			"title": "Encontre qualquer cidade ao seu alcance",
+			"text": "Pesquise, descubra e explore cidades de todo o mundo com facilidade. Comece já a sua jornada!"
+		},
+		"Country": {
+			"Cities": {
+				"title": "Cidades",
+				"name": "Nome",
+				"coordinates": "Coordenadas",
+				"notFound": {
+					"title": "Sem cidades",
+					"text": "Não há entradas disponíveis para este país."
+				}
+			},
+			"Stats": {
+				"currency": "Moeda",
+				"phone": "Indicativo",
+				"coordinates": "Coordenadas"
+			}
+		},
+		"Error": {
+			"title": "Algo correu mal",
+			"text": "Contacte o administrador para obter mais detalhes ou tente novamente mais tarde."
+		},
+		"NotFound": {
+			"title": "Página não encontrada",
+			"text": "A página que procura não existe ou foi movida."
+		}
+	},
+	"Components": {
+		"ColorSchemeToggle": {
+			"label": "Alternar tema",
+			"light": "Claro",
+			"dark": "Escuro",
+			"system": "Sistema"
+		},
+		"LangSwitch": {
+			"placeholder": "Idioma",
+			"label": "{locale, select, en {English} pt {Português} other {Desconhecido}}"
+		},
+		"Search": {
+			"trigger": "Selecionar país",
+			"search": "Pesquisar",
+			"noResults": "Nenhum país encontrado"
+		},
+		"Splash": {
+			"linkText": "Regressar à página inicial"
+		}
+	}
+}

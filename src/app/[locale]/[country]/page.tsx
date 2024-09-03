@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { City, Country } from "country-state-city";
-import { Clock, Coins, Earth, Phone } from "lucide-react";
+import { Coins, Earth, Phone } from "lucide-react";
 
-import { CountryPageParams, PageParams } from "@/types/globals";
+import { CountryRouteParams, RouteParams } from "@/types/globals";
 
 import { slugify } from "@/lib/utils";
 import { fetchCountryBySlug } from "@/lib/fetch";
@@ -29,7 +30,8 @@ export function generateStaticParams() {
 	return countries.map((country) => ({ country: slugify(country.name) }));
 }
 
-export default function CountryPage({ params }: PageParams<CountryPageParams>) {
+export default function CountryPage({ params }: RouteParams<CountryRouteParams>) {
+	const t = useTranslations("Pages.Country");
 	const country = fetchCountryBySlug(params.country);
 
 	if (!country) notFound();
@@ -40,7 +42,41 @@ export default function CountryPage({ params }: PageParams<CountryPageParams>) {
 		<>
 			<h1 className="mb-8">{country.name}</h1>
 
-			<div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4 mb-10">
+			<Card className="p-8 mb-10">
+				<h2 className="mb-6">{t("Cities.title")}</h2>
+
+				{cities ? (
+					<Table>
+						<TableHeader>
+							<TableRow>
+								<TableHead>{t("Cities.name")}</TableHead>
+								<TableHead>{t("Cities.coordinates")}</TableHead>
+							</TableRow>
+						</TableHeader>
+						<TableBody>
+							{cities.map((city) => (
+								<TableRow key={city.name + city.countryCode}>
+									<TableCell className="font-bold">
+										<Link href={`${params.country}/${slugify(city.name)}`}>
+											{city.name}
+										</Link>
+									</TableCell>
+									<TableCell>
+										{city.latitude}, {city.longitude}
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				) : (
+					<Alert>
+						<AlertTitle>{t("Cities.notFound.title")}</AlertTitle>
+						<AlertDescription>{t("Cities.notFound.text")}</AlertDescription>
+					</Alert>
+				)}
+			</Card>
+
+			<div className="grid gap-4 md:grid-cols-3 md:gap-8 mb-10">
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
 						<CardTitle className="text-sm font-medium">Currency</CardTitle>
@@ -72,54 +108,7 @@ export default function CountryPage({ params }: PageParams<CountryPageParams>) {
 						</div>
 					</CardContent>
 				</Card>
-
-				<Card>
-					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
-						<CardTitle className="text-sm font-medium">Active Now</CardTitle>
-						<Clock className="h-6 w-6" />
-					</CardHeader>
-					<CardContent>
-						<div className="text-2xl font-bold">+573</div>
-					</CardContent>
-				</Card>
 			</div>
-
-			<Card className="p-8">
-				<h2 className="mb-6">Cities</h2>
-
-				{cities ? (
-					<Table>
-						<TableHeader>
-							<TableRow>
-								<TableHead>Name</TableHead>
-								<TableHead>State</TableHead>
-								<TableHead>Coordinates</TableHead>
-								<TableHead></TableHead>
-							</TableRow>
-						</TableHeader>
-						<TableBody>
-							{cities.map((city, index) => (
-								<TableRow key={city.name + city.countryCode}>
-									<TableCell className="font-bold">
-										<Link href={`${params.country}/${slugify(city.name)}`}>{city.name}</Link>
-									</TableCell>
-									<TableCell>{city.stateCode}</TableCell>
-									<TableCell>
-										{city.latitude}, {city.longitude}
-									</TableCell>
-								</TableRow>
-							))}
-						</TableBody>
-					</Table>
-				) : (
-					<Alert>
-						<AlertTitle>No cities</AlertTitle>
-						<AlertDescription>
-							There are no entries available for this country.
-						</AlertDescription>
-					</Alert>
-				)}
-			</Card>
 		</>
 	);
 }

@@ -9,14 +9,18 @@ export type ErrorProps = {
 	reset: () => void;
 };
 
-export type PageParams<T> = {
+export type RouteParams<T> = {
 	params: T;
 };
 
-export type CountryPageParams = {
+export type LocaleParams = {
+	locale: string;
+};
+
+export type CountryRouteParams = {
 	country: string;
 };
 
-export type CityPageParams = {
+export type CityRouteParams = {
 	city: string;
 };
