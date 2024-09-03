@@ -8,15 +8,6 @@
 			"text": "Search, discover, and explore cities across the globe with ease. Start your journey now!"
 		},
 		"Country": {
-			"Cities": {
-				"title": "Cities",
-				"name": "Name",
-				"coordinates": "Coordinates",
-				"notFound": {
-					"title": "No cities",
-					"text": "There are no entries available for this country."
-				}
-			},
 			"Stats": {
 				"currency": "Currency",
 				"phone": "Phone Code",
@@ -33,6 +24,15 @@
 		}
 	},
 	"Components": {
+		"CityList": {
+			"title": "Cities",
+			"name": "Name",
+			"coordinates": "Coordinates",
+			"notFound": {
+				"title": "No cities",
+				"text": "There are no entries available for this country."
+			}
+		},
 		"ColorSchemeToggle": {
 			"label": "Toggle theme",
 			"light": "Light",

@@ -8,15 +8,6 @@
 			"text": "Pesquise, descubra e explore cidades de todo o mundo com facilidade. Comece já a sua jornada!"
 		},
 		"Country": {
-			"Cities": {
-				"title": "Cidades",
-				"name": "Nome",
-				"coordinates": "Coordenadas",
-				"notFound": {
-					"title": "Sem cidades",
-					"text": "Não há entradas disponíveis para este país."
-				}
-			},
 			"Stats": {
 				"currency": "Moeda",
 				"phone": "Indicativo",
@@ -33,6 +24,15 @@
 		}
 	},
 	"Components": {
+		"CityList": {
+			"title": "Cidades",
+			"name": "Nome",
+			"coordinates": "Coordenadas",
+			"notFound": {
+				"title": "Sem cidades",
+				"text": "Não há entradas disponíveis para este país."
+			}
+		},
 		"ColorSchemeToggle": {
 			"label": "Alternar tema",
 			"light": "Claro",

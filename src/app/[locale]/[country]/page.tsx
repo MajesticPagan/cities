@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { City, Country } from "country-state-city";
@@ -9,21 +8,8 @@ import { CountryRouteParams, RouteParams } from "@/types/globals";
 import { slugify } from "@/lib/utils";
 import { fetchCountryBySlug } from "@/lib/fetch";
 
-import {
-	Alert,
-	AlertDescription,
-	AlertTitle,
-	Card,
-	CardContent,
-	CardHeader,
-	CardTitle,
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from "@/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { CityList } from "@/components/sections";
 
 export function generateStaticParams() {
 	const countries = Country.getAllCountries();
@@ -42,44 +28,12 @@ export default function CountryPage({ params }: RouteParams<CountryRouteParams>)
 		<>
 			<h1 className="mb-8">{country.name}</h1>
 
-			<Card className="p-8 mb-10">
-				<h2 className="mb-6">{t("Cities.title")}</h2>
-
-				{cities ? (
-					<Table>
-						<TableHeader>
-							<TableRow>
-								<TableHead>{t("Cities.name")}</TableHead>
-								<TableHead>{t("Cities.coordinates")}</TableHead>
-							</TableRow>
-						</TableHeader>
-						<TableBody>
-							{cities.map((city) => (
-								<TableRow key={city.name + city.countryCode}>
-									<TableCell className="font-bold">
-										<Link href={`${params.country}/${slugify(city.name)}`}>
-											{city.name}
-										</Link>
-									</TableCell>
-									<TableCell>
-										{city.latitude}, {city.longitude}
-									</TableCell>
-								</TableRow>
-							))}
-						</TableBody>
-					</Table>
-				) : (
-					<Alert>
-						<AlertTitle>{t("Cities.notFound.title")}</AlertTitle>
-						<AlertDescription>{t("Cities.notFound.text")}</AlertDescription>
-					</Alert>
-				)}
-			</Card>
+			<CityList items={cities} />
 
 			<div className="grid gap-4 md:grid-cols-3 md:gap-8 mb-10">
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
-						<CardTitle className="text-sm font-medium">Currency</CardTitle>
+						<CardTitle className="text-sm font-medium">{t("Stats.currency")}</CardTitle>
 						<Coins className="h-6 w-6" />
 					</CardHeader>
 					<CardContent>
@@ -89,7 +43,7 @@ export default function CountryPage({ params }: RouteParams<CountryRouteParams>)
 
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
-						<CardTitle className="text-sm font-medium">Phone Code</CardTitle>
+						<CardTitle className="text-sm font-medium">{t("Stats.phone")}</CardTitle>
 						<Phone className="h-6 w-6" />
 					</CardHeader>
 					<CardContent>
@@ -99,7 +53,9 @@ export default function CountryPage({ params }: RouteParams<CountryRouteParams>)
 
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 text-muted-foreground">
-						<CardTitle className="text-sm font-medium">Coordinates</CardTitle>
+						<CardTitle className="text-sm font-medium">
+							{t("Stats.coordinates")}
+						</CardTitle>
 						<Earth className="h-6 w-6" />
 					</CardHeader>
 					<CardContent>
