@@ -7,6 +7,22 @@
 			"title": "Find any city at your fingertips",
 			"text": "Search, discover, and explore cities across the globe with ease. Start your journey now!"
 		},
+		"Country": {
+			"Cities": {
+				"title": "Cities",
+				"name": "Name",
+				"coordinates": "Coordinates",
+				"notFound": {
+					"title": "No cities",
+					"text": "There are no entries available for this country."
+				}
+			},
+			"Stats": {
+				"currency": "Currency",
+				"phone": "Phone Code",
+				"coordinates": "Coordinates"
+			}
+		},
 		"Error": {
 			"title": "Something went wrong",
 			"text": "Please contact the admin for further details or try again later."
