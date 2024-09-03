@@ -5,6 +5,7 @@ export * from "./Command";
 export * from "./Dialog";
 export * from "./DropdownMenu";
 export * from "./Input";
+export * from "./Pagination";
 export * from "./Popover";
 export * from "./Select";
 export * from "./Skeleton";
