@@ -41,14 +41,14 @@ const Search = ({ className, ...props }: SearchProps) => {
 			setValue(returnValue);
 			setOpen(false);
 		},
-		[value]
+		[value, countries]
 	);
 
 	useEffect(() => {
 		if (value?.name) {
 			router.push("/" + slugify(value.name));
 		}
-	}, [value]);
+	}, [value, router]);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
