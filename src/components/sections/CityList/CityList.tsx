@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ICity } from "country-state-city";
@@ -27,6 +28,7 @@ type CityListProps = {
 };
 
 const CityList = ({ items }: CityListProps) => {
+	const [currentPage, setCurrentPage] = useState(1);
 	const { country } = useParams<CountryRouteParams>();
 	const t = useTranslations("Components.CityList");
 
@@ -40,28 +42,32 @@ const CityList = ({ items }: CityListProps) => {
 	}
 
 	return (
-		<Card>
-			<Table>
-				<TableHeader>
-					<TableRow>
-						<TableHead>{t("name")}</TableHead>
-						<TableHead>{t("coordinates")}</TableHead>
-					</TableRow>
-				</TableHeader>
-				<TableBody>
-					{items.map((item) => (
-						<TableRow key={item.name + item.countryCode}>
-							<TableCell className="font-bold">
-								<Link href={`${country}/${slugify(item.name)}`}>{item.name}</Link>
-							</TableCell>
-							<TableCell>
-								{item.latitude}, {item.longitude}
-							</TableCell>
+		<>
+			<Card>
+				<Table>
+					<TableHeader>
+						<TableRow>
+							<TableHead>{t("name")}</TableHead>
+							<TableHead>{t("coordinates")}</TableHead>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</Card>
+					</TableHeader>
+					<TableBody>
+						{items.map((item) => (
+							<TableRow key={item.name + item.countryCode}>
+								<TableCell className="font-bold">
+									<Link href={`${country}/${slugify(item.name)}`}>
+										{item.name}
+									</Link>
+								</TableCell>
+								<TableCell>
+									{item.latitude}, {item.longitude}
+								</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</Card>
+		</>
 	);
 };
 
